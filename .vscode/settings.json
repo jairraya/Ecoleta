@@ -1,5 +1,5 @@
 {
-  "editor.tabSize": 2,
   "editor.fastScrollSensitivity": 2,
-  "editor.definitionLinkOpensInPeek": true
+  "editor.definitionLinkOpensInPeek": true,
+  "editor.detectIndentation": false
 }
