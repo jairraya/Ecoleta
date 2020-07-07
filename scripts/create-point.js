@@ -55,7 +55,7 @@ for (const item of itemsToCollect) {
     
 }
 
-let selectedItems = []
+let selectedItems = [1, 2, 3, 4, 5, 6]
 
 function handleSelectedItem(event) {
     const itemLi = event.target
@@ -68,10 +68,15 @@ function handleSelectedItem(event) {
     //verificar se existem itens selecionados,
     //se sim, pegar os itens selecionados
 
+    const alreadySelected = selectedItems.findIndex( item => {
+        const itemFound = item == itemId //isso será true or false 
+        return itemFound
+    })
+
     //se ja estiver selecionado, tirar da selecao
 
     //se nao estiver selecionado, adicionar a selecao
-
+ 
     //atualizar o canpo escondido com os itens selecionados 
 
 
