@@ -55,7 +55,9 @@ for (const item of itemsToCollect) {
     
 }
 
-let selectedItems = [1, 2, 3, 4, 5, 6]
+const collectedItems = document.querySelector("input[name=items]")
+
+let selectedItems = []
 
 function handleSelectedItem(event) {
     const itemLi = event.target
@@ -63,7 +65,7 @@ function handleSelectedItem(event) {
     //adicionar ou remover uma classe com javascript
     itemLi.classList.toggle("selected")
 
-    const itemId = itemli.dataset.id
+    const itemId = itemLi.dataset.id
 
     //verificar se existem itens selecionados,
     //se sim, pegar os itens selecionados
@@ -73,14 +75,24 @@ function handleSelectedItem(event) {
         return itemFound
     })
 
-    //se ja estiver selecionado, tirar da selecao
+    //se ja estiver selecionado
+    if(alreadySelected >=0){
+        //tirar da selecao
+        const filteredItems = selectedItems.filter(item => {
+            const itemIsDifferent = item != itemId //false
+            return itemIsDifferent
+        })
 
-    //se nao estiver selecionado, adicionar a selecao
- 
-    //atualizar o canpo escondido com os itens selecionados 
+        selectedItems = filteredItems
 
+    } else{
+        //se nao estiver selecionado
+        //adicionar a selecao
+        selectedItems.push(itemId)
 
+    }
 
-
-
+    //atualizar o canpo escondido com os itens selecionados
+    collectedItems.value = selectedItems
+    
 }
