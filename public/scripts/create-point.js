@@ -1,15 +1,15 @@
 //Dados da entidade
-function populateUFs(){
+function populateUFs() {
     const ufSelect = document.querySelector("select[name=uf]")
 
     fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados")
-    .then( res => res.json() )
-    .then( states => {
+        .then(res => res.json())
+        .then(states => {
 
-        for(const state of states){
-            ufSelect.innerHTML += `<option value="${state.id}">${state.nome}</option>`
-        }
-    })
+            for (const state of states) {
+                ufSelect.innerHTML += `<option value="${state.id}">${state.nome}</option>`
+            }
+        })
 }
 
 populateUFs()
@@ -22,24 +22,24 @@ function getCities(event) {
 
     const indexOfSelectState = event.target.selectedIndex
     stateInput.value = event.target.options[indexOfSelectState].text
-    
+
     const url = `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${ufValue}/municipios`
 
 
     citySelect.innerHTML = "<option value>Selecione a Cidade</option>"
     citySelect.disabled = true
 
-    fetch(url) 
-    .then( res => res.json() )
-    .then( cities => {
+    fetch(url)
+        .then(res => res.json())
+        .then(cities => {
 
-        for(const city of cities){
-            citySelect.innerHTML += `<option value="${city.nome}">${city.nome}</option>`
-        }
+            for (const city of cities) {
+                citySelect.innerHTML += `<option value="${city.nome}">${city.nome}</option>`
+            }
 
-        citySelect.disabled = false
+            citySelect.disabled = false
 
-    })
+        })
 }
 
 document
@@ -52,7 +52,7 @@ const itemsToCollect = document.querySelectorAll(".items-grid li")
 
 for (const item of itemsToCollect) {
     item.addEventListener("click", handleSelectedItem)
-    
+
 }
 
 const collectedItems = document.querySelector("input[name=items]")
@@ -70,13 +70,13 @@ function handleSelectedItem(event) {
     //verificar se existem itens selecionados,
     //se sim, pegar os itens selecionados
 
-    const alreadySelected = selectedItems.findIndex( item => {
+    const alreadySelected = selectedItems.findIndex(item => {
         const itemFound = item == itemId //isso será true or false 
         return itemFound
     })
 
     //se ja estiver selecionado
-    if(alreadySelected >=0){
+    if (alreadySelected >= 0) {
         //tirar da selecao
         const filteredItems = selectedItems.filter(item => {
             const itemIsDifferent = item != itemId //false
@@ -85,7 +85,7 @@ function handleSelectedItem(event) {
 
         selectedItems = filteredItems
 
-    } else{
+    } else {
         //se nao estiver selecionado
         //adicionar a selecao
         selectedItems.push(itemId)
@@ -94,5 +94,5 @@ function handleSelectedItem(event) {
 
     //atualizar o canpo escondido com os itens selecionados
     collectedItems.value = selectedItems
-    
+
 }
