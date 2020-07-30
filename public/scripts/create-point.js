@@ -52,7 +52,6 @@ const itemsToCollect = document.querySelectorAll(".items-grid li")
 
 for (const item of itemsToCollect) {
     item.addEventListener("click", handleSelectedItem)
-
 }
 
 const collectedItems = document.querySelector("input[name=items]")
@@ -66,6 +65,8 @@ function handleSelectedItem(event) {
     itemLi.classList.toggle("selected")
 
     const itemId = itemLi.dataset.id
+
+    // console.log(`ITEM ID: `, itemId)
 
     //verificar se existem itens selecionados,
     //se sim, pegar os itens selecionados
@@ -91,6 +92,8 @@ function handleSelectedItem(event) {
         selectedItems.push(itemId)
 
     }
+
+    // console.log(`selectedItems`, selectedItems)
 
     //atualizar o canpo escondido com os itens selecionados
     collectedItems.value = selectedItems
